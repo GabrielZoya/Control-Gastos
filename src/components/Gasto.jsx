@@ -9,11 +9,22 @@ import IconOcio from "../img/icono_ocio.svg";
 import IconSalud from "../img/icono_salud.svg";
 import IconSus from "../img/icono_suscripciones.svg";
 
+const diccionarioIconos = {
+  ahorro: IconAhorro,
+  casa: IconCasa,
+  comida: IconComida,
+  gastos: IconGastos,
+  ocio: IconOcio,
+  salud: IconSalud,
+  suscripciones: IconSus,
+};
+
 const Gasto = ({ gasto }) => {
   const { categoria, nombre, cantidad, id, fecha } = gasto;
   return (
     <div className="gasto sombra">
       <div className="contenido-gasto">
+        <img src={diccionarioIconos[categoria]} alt="Icono categoria" />
         <div className="descripcion-gasto">
           <p className="categoria">{categoria}</p>
           <p className="nombre-gasto">{nombre}</p>
