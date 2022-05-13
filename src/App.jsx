@@ -9,7 +9,9 @@ import { generarId } from "./helpers";
 import IconoGasto from "./img/nuevo-gasto.svg";
 
 function App() {
-  const [presupuesto, setPresupuesto] = useState(0);
+  const [presupuesto, setPresupuesto] = useState(
+    Number(localStorage.getItem("presupuesto")) ?? 0
+  );
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false);
 
   const [modal, setModal] = useState(false);
@@ -30,6 +32,18 @@ function App() {
     }
   }, [gastoEditar]);
 
+  useEffect(() => {
+    localStorage.setItem("presupuesto", presupuesto ?? 0);
+  }, [presupuesto]);
+
+  useEffect(() => {
+    const presupuestoLS = Number(localStorage.getItem("presupuesto")) ?? 0;
+
+    if (presupuesto > 0) {
+      setIsValidPresupuesto(true);
+    }
+  }, []);
+
   const handleNuevoGasto = () => {
     setModal(true);
     setGastoEditar({});
@@ -49,6 +63,7 @@ function App() {
       gasto.id = generarId();
       gasto.fecha = Date.now();
       setGastos([...gastos, gasto]);
+      setGastoEditar({});
     }
     setAnimarModal(false);
     setTimeout(() => {
@@ -96,6 +111,7 @@ function App() {
           setAnimarModal={setAnimarModal}
           guardarGasto={guardarGasto}
           gastoEditar={gastoEditar}
+          setGastoEditar={setGastoEditar}
         />
       )}
     </div>
