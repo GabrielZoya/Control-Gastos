@@ -2,7 +2,7 @@
   "name": "mi-presupuesto",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://GabrielZoya.github.io/Control-Gastos",
+  "homepage": "https://gabrielzoya.github.io/Control-Gastos",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",

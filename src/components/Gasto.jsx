@@ -35,7 +35,7 @@ const Gasto = ({ gasto, setGastoEditar, eliminarGasto }) => {
 
   const leadingActions = () => (
     <LeadingActions>
-      <SwipeAction onClick={() => setGastoEditar(gasto)}>Editar</SwipeAction>
+      <SwipeAction onClick={() => setGastoEditar(gasto)}>Editar </SwipeAction>
     </LeadingActions>
   );
   const trailingActions = () => (
